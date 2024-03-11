@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  tl-detection:
+    container_name: tl-detection
+    build:
+      context: detection
+    ports:
+      - 8080:8080
+    volumes:
+      - /media/alex/Storage/Domhnall/weights:/shared/weights
+#  tl-classification:
+#    build:
+#      context: classification
+  redis:
+    container_name: redis
+    image: redis
+    entrypoint: redis-server --save "" --appendonly no
